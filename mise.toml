@@ -12,3 +12,7 @@ description = "Lint with ruff"
 [tasks.format]
 run = "uv run ruff format ."
 description = "Format with ruff"
+
+[tasks.run-plugin]
+run = "uv run --extra plugin python plugins/action.py"
+description = "Run the KiCad plugin standalone"
