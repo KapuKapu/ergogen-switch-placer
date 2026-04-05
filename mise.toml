@@ -1,16 +1,14 @@
 [tools]
 uv = "latest"
 
-[tasks.venv]
-run = "uv venv --system-site-packages -q --clear"
-description = "Create venv with access to system packages (pcbnew)"
-
 [tasks.test]
-depends = ["venv"]
-run = "uv run pytest -v"
+run = "uv run python -m pytest -v"
 description = "Run placement tests"
 
-[tasks.place]
-depends = ["venv"]
-run = 'uv run python -m ergogen_key_placer.place_footprints'
-description = "Place a KiCad footprint at every Ergogen key position"
+[tasks.lint]
+run = "uv run ruff check ."
+description = "Lint with ruff"
+
+[tasks.format]
+run = "uv run ruff format ."
+description = "Format with ruff"

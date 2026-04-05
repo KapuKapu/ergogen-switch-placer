@@ -1,0 +1,22 @@
+{
+    "$schema": "https://go.kicad.org/api/schemas/v1",
+    "identifier": "com.github.ergogen-key-placer",
+    "name": "Ergogen Switch Placer",
+    "description": "Place a KiCad footprint at every key position from Ergogen points",
+    "runtime": {
+        "type": "python",
+        "min_version": "3.9"
+    },
+    "actions": [
+        {
+            "identifier": "place-switches",
+            "name": "Place Ergogen Switches",
+            "description": "Place footprints at Ergogen key positions on the current board",
+            "show-button": true,
+            "scopes": [
+                "pcb"
+            ],
+            "entrypoint": "action.py"
+        }
+    ]
+}

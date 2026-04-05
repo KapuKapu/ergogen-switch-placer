@@ -1,17 +1,36 @@
 [project]
-name = "ergogen-key-placer"
+name = "ergogen-switch-placer"
 version = "1.0.0"
-description = "Places a KiCad footprint at every Ergogen key position"
+description = "Places a KiCad footprint at every Ergogen switch position"
 requires-python = ">=3.14"
 dependencies = [
     "typer>=0.15",
 ]
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+[project.optional-dependencies]
+plugin = [
+    "kicad-python>=0.4.0",
+]
 
 [dependency-groups]
 dev = [
+    "kicad-python>=0.4.0",
     "pytest>=9.0.2",
+    "ruff>=0.11",
 ]
+
+[tool.ruff]
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "COM812",  # trailing-comma (conflicts with formatter)
+    "ISC001",  # single-line-implicit-string-concatenation (conflicts with formatter)
+    "D",       # pydocstyle (skip docstring enforcement)
+    "T20",     # flake8-print (CLI uses print on purpose)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "ANN"]
+"kicad-plugin/*" = ["INP001"]
