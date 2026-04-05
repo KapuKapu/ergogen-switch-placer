@@ -1,0 +1,10 @@
+[tools]
+uv = "latest"
+
+[tasks.test]
+run = "uv run pytest -v"
+description = "Run placement tests"
+
+[tasks.place]
+run = 'uv run python place_footprints.py' 
+description = "Place a KiCad footprint at every Ergogen key position"

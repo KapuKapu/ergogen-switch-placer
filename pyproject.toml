@@ -1,0 +1,13 @@
+[project]
+name = "ergogen-key-placer"
+version = "1.0.0"
+description = "Places a KiCad footprint at every Ergogen key position"
+requires-python = ">=3.14"
+dependencies = [
+    "typer>=0.15",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+
