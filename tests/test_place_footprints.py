@@ -3,10 +3,16 @@
 import json
 from pathlib import Path
 
-import pcbnew
 import pytest
 
-from place_footprints import place_footprints
+try:
+    import pcbnew
+except ImportError:
+    pcbnew = None
+
+pytestmark = pytest.mark.skipif(pcbnew is None, reason="pcbnew (KiCad) not available")
+
+from ergogen_key_placer.place_footprints import place_footprints
 
 SCRIPTS_DIR = Path(__file__).parent
 FIXTURES_DIR = SCRIPTS_DIR / "fixtures"

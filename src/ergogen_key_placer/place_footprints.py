@@ -4,11 +4,12 @@
 import json
 from pathlib import Path
 
-import pcbnew
 import typer
 
 
 def place_footprints(points_path: Path, footprint_path: Path, output_path: Path):
+    import pcbnew
+
     footprint_path = footprint_path.resolve()
 
     with open(points_path) as f:

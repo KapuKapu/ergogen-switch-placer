@@ -1,10 +1,16 @@
 [tools]
 uv = "latest"
 
+[tasks.venv]
+run = "uv venv --system-site-packages -q --clear"
+description = "Create venv with access to system packages (pcbnew)"
+
 [tasks.test]
+depends = ["venv"]
 run = "uv run pytest -v"
 description = "Run placement tests"
 
 [tasks.place]
-run = 'uv run python place_footprints.py' 
+depends = ["venv"]
+run = 'uv run python -m ergogen_key_placer.place_footprints'
 description = "Place a KiCad footprint at every Ergogen key position"
